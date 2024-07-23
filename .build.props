@@ -39,8 +39,8 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <LLVMInstallDir>C:\Program Files\LLVM</LLVMInstallDir>
     <LLVMToolsVersion>18.1.8</LLVMToolsVersion>
-    <OutDir>$(SolutionDir)out\$(MSBuildProjectName)\bin\$(Configuration) - $(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)out\$(MSBuildProjectName)\int\$(Configuration) - $(Platform)\</IntDir>
+    <OutDir>$(MSBuildThisFileDirectory)out\$(MSBuildProjectName)\bin\$(Configuration) - $(Platform)\</OutDir>
+    <IntDir>$(MSBuildThisFileDirectory)out\$(MSBuildProjectName)\int\$(Configuration) - $(Platform)\</IntDir>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <EnableMicrosoftCodeAnalysis>true</EnableMicrosoftCodeAnalysis>
