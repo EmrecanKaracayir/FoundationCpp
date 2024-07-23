@@ -36,7 +36,7 @@ namespace fn::Utility
     // hicpp-no-array-decay)
 
     // Log the exception
-    std::cerr << message << '\n';
+    std::cerr << '\n' << message << '\n';
 
     // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
     // hicpp-no-array-decay)

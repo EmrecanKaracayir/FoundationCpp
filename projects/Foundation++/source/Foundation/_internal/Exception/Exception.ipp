@@ -159,7 +159,7 @@ namespace fn::_internal::Exception
 #pragma warning(disable : 26'447 26'485)
 
       // Print exception name
-      os << '\n' << name.value << '\n';
+      os << name.value << '\n';
 
       // Print message if available
       if (const auto message{exception.m_message}; message.has_value())
