@@ -45,5 +45,13 @@
     <ClInclude Include="source\Foundation\_internal\Exception\_internal\concepts.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\pch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

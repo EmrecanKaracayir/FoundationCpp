@@ -13,6 +13,12 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <!-- Items -->
   <ItemGroup>
+    <ClCompile Include="source\pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\pch.hpp" />
     <ClInclude Include="source\Foundation\concepts.hpp" />
     <ClInclude Include="source\Foundation\constants.hpp" />
     <ClInclude Include="source\Foundation\errors.hpp" />
