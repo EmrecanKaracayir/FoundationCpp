@@ -1,3 +1,3 @@
-# Template++
+# Foundation++
 
-This is a Visual Studio template for C++20 projects.
+This is a foundation library for C++20 projects.
