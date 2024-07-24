@@ -187,7 +187,7 @@ namespace fn::_internal::Exception
          << ")\n";
 
       // Print routine
-      os << "  Routine: " << exception.m_location.function_name() << '\n';
+      os << "  Routine: " << exception.m_location.function_name();
 
 #pragma warning(pop)
 
