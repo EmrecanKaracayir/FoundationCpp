@@ -31,7 +31,7 @@ namespace fn::_internal::Exception
      * @brief Constructs an exception by copying another exception.
      * @param other Other exception to copy from.
      */
-    Exception(const Exception& other) noexcept = default;
+    Exception(const Exception& other) = default;
 
     /**
      * @brief Constructs an exception by moving another exception.
@@ -86,7 +86,7 @@ namespace fn::_internal::Exception
      * @param   other The other exception to copy from.
      * @returns The reference to this exception.
      */
-    auto operator=(const Exception& other) noexcept -> Exception& = default;
+    auto operator=(const Exception& other) -> Exception& = default;
 
     /**
      * @brief   Assigns another exception to this exception by moving.
