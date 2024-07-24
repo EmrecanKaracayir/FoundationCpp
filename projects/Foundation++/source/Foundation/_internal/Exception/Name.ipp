@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <span>
+#include <tuple>
 
 // NOLINTBEGIN(cppcoreguidelines-avoid-c-arrays, hicpp-avoid-c-arrays,
 // modernize-avoid-c-arrays)
@@ -63,7 +64,9 @@ namespace fn::_internal::Exception
   constexpr Name<length>::Name(const cdef (&name)[length]) noexcept
   {
     // Copy the name
-    (void) std::ranges::copy_n(name, length, std::span<cdef>{value}.begin());
+    std::ignore = std::ranges::copy_n(
+      name, length, std::span<cdef>{value}.begin()
+    );
   }
 } // namespace fn::_internal::Exception
 
