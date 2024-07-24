@@ -39,8 +39,6 @@ namespace fn::_internal::Exception
      */
     Exception(Exception&& other) noexcept = default;
 
-    Exception() noexcept = default;
-
     /**
      * @brief Constructs an exception without any message or context.
      */
