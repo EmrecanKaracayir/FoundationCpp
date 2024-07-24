@@ -13,6 +13,14 @@
 namespace fn
 {
   /**
+   * @brief  An exception type for errors related to illegal or inappropriate
+   *         arguments.
+   * @remark Use this exception to signal that an illegal or inappropriate
+   *         argument was found.
+   */
+  using IllegalArgumentError = EXCEPTION<NAME{"IllegalArgumentError"}, unit>;
+
+  /**
    * @brief  An exception type for errors related to unexpected enumerated
    *         values.
    * @remark Use this exception to signal that an unexpected value was found
