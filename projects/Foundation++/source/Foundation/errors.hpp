@@ -13,25 +13,32 @@
 namespace fn
 {
   /**
-   * @brief  An exception type for errors related to illegal or inappropriate
+   * @brief  An exception type for errors related to function or method
    *         arguments.
    * @remark Use this exception to signal that an illegal or inappropriate
-   *         argument was found.
+   *         argument was encountered.
    */
-  using IllegalArgumentError = EXCEPTION<NAME{"IllegalArgumentError"}, unit>;
+  using ArgumentError = EXCEPTION<NAME{"ArgumentError"}, unit>;
 
   /**
-   * @brief  An exception type for errors related to unexpected enumerated
-   *         values.
-   * @remark Use this exception to signal that an unexpected value was found
-   *         in an enumeration.
+   * @brief  An exception type for errors related to enumerators.
+   * @remark Use this exception to signal that an illegal or inappropriate
+   *         enumerator was encountered.
    */
-  using EnumValueError = EXCEPTION<NAME{"EnumValueError"}, unit>;
+  using EnumeratorError = EXCEPTION<NAME{"EnumeratorError"}, unit>;
+
+  /**
+   * @brief  An exception type for errors related to user input.
+   * @remark Use this exception to signal that an illegal or inappropriate
+   *         user input was encountered.
+   */
+  using InputError = EXCEPTION<NAME{"InputError"}, unit>;
 
   /**
    * @brief     An exception type for errors related to narrowing conversions.
    * @details   This exception is thrown by the @ref fn::narrow_cast function
-   *            when a narrowing conversion is detected.
+   *            when the cast produces a result that cannot be accurately
+   *            represented in the target type due to narrowing.
    * @attention Only use this exception in catch blocks as it is not meant to
    *            be thrown by the user.
    */
