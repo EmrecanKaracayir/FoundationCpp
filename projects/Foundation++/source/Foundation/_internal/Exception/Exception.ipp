@@ -156,8 +156,14 @@ namespace fn::_internal::Exception
 #pragma warning(push)
 #pragma warning(disable : 26'447 26'485)
 
+      // NOLINTBEGIN(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+      // hicpp-no-array-decay)
+
       // Print exception name
       os << name.value << '\n';
+
+      // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+      // hicpp-no-array-decay)
 
       // Print message if available
       if (const auto message{exception.m_message}; message.has_value())
