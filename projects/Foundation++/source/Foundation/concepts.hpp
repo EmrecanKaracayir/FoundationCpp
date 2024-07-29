@@ -22,8 +22,8 @@ namespace fn
    * @brief Concept that checks if a type is printable.
    */
   template <typename Type>
-  concept IsPrintable = requires(Type type, std::ostream& os) {
-    { os << type } -> std::same_as<std::ostream&>;
+  concept IsPrintable = requires(Type typeName, std::ostream& os) {
+    { os << typeName } -> std::same_as<std::ostream&>;
   };
 
   /**
