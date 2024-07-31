@@ -18,7 +18,7 @@ namespace fn
 
   /**
    * @brief  Exception identifier for unknown exceptions.
-   * @remark Use in catch-all blocks to catch unknown exceptions.
+   * @remark Use in catch-all blocks to identify unknown exceptions.
    */
   inline constexpr cstr UNKNOWN_EXCEPTION{"Unknown exception"};
 } // namespace fn

@@ -18,6 +18,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Foundation\Support\consteval.ipp">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="source\pch.hpp" />
     <ClInclude Include="source\Foundation\concepts.hpp" />
     <ClInclude Include="source\Foundation\constants.hpp" />

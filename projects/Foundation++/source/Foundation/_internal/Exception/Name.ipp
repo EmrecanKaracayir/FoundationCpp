@@ -29,7 +29,7 @@ namespace fn::_internal::Exception
      * @brief Constructs a name from a C-style string.
      * @param name The C-style string.
      */
-    constexpr explicit Name(const cdef (&name)[length]) noexcept;
+    consteval explicit Name(const cdef (&name)[length]) noexcept;
 
     /*------------------------------------------------------------------------*\
     *| [public]: Fields                                                       |*
@@ -60,7 +60,7 @@ namespace fn::_internal::Exception
   \*--------------------------------------------------------------------------*/
 
   template <size length>
-  constexpr Name<length>::Name(const cdef (&name)[length]) noexcept
+  consteval Name<length>::Name(const cdef (&name)[length]) noexcept
   {
     // Copy the name
     std::ranges::copy_n(name, length, std::span<cdef>{value}.begin());

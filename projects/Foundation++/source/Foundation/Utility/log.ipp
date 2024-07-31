@@ -8,9 +8,9 @@
 namespace fn::Utility
 {
   /**
-   * @brief    A @c noexcept wrapper around @c std::cerr.
+   * @brief    A `noexcept` wrapper around `std::cerr`.
    * @param    message The message to log.
-   * @remark   Inserts a newline character after the message.
+   * @note     Inserts a newline character after the message.
    * @internal A proper logging library will surpass this function.
    */
   inline auto elog(const auto& message) noexcept -> none;

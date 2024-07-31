@@ -7,14 +7,13 @@
 namespace fn::Utility
 {
   /**
-   * @brief    A @c noexcept wrapper around @c std::exception::what.
+   * @brief    A `noexcept` wrapper around `std::exception::what`.
    * @param    exception The exception to get the message of.
-   * @internal When MSVC decides to conform to the standard by making
-   *           @c std::exception::what @c noexcept, this function will be
-   *           removed.
    * @return   The message of the exception.
+   * @internal When MSVC decides to conform to the standard by making
+   *           `std::exception::what` `noexcept`, this function will be removed.
    */
-  [[nodiscard]] constexpr auto WHAT(const std::exception& exception
+  [[nodiscard]] inline auto what(const std::exception& exception
   ) noexcept -> cstr;
 } // namespace fn::Utility
 
@@ -24,7 +23,7 @@ namespace fn::Utility
 
 namespace fn::Utility
 {
-  [[nodiscard]] constexpr auto WHAT(const std::exception& exception
+  [[nodiscard]] inline auto what(const std::exception& exception
   ) noexcept -> cstr
   {
 #pragma warning(push)
@@ -45,7 +44,7 @@ namespace fn::Utility
 
 namespace fn
 {
-  using Utility::WHAT;
+  using Utility::what;
 } // namespace fn
 
 // NOLINTEND(misc-unused-using-decls)

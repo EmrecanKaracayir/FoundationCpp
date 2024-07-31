@@ -35,12 +35,12 @@ namespace fn
   using InputError = EXCEPTION<NAME{"InputError"}, unit>;
 
   /**
-   * @brief     An exception type for errors related to narrowing conversions.
-   * @details   This exception is thrown by the @ref fn::narrow_cast function
-   *            when the cast produces a result that cannot be accurately
-   *            represented in the target type due to narrowing.
-   * @attention Only use this exception in catch blocks as it is not meant to
-   *            be thrown by the user.
+   * @brief   An exception type for errors related to narrowing conversions.
+   * @details This exception is thrown by the `fn::narrow_cast` function when
+   *          the cast produces a result that cannot be accurately represented
+   *          in the target type due to narrowing.
+   * @warning Only use this exception in catch blocks as it is not meant to be
+   *          thrown by the user.
    */
   using NarrowingError = EXCEPTION<NAME{"NarrowingError"}, unit>;
 } // namespace fn

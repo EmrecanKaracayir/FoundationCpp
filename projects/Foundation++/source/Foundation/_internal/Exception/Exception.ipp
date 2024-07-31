@@ -15,9 +15,11 @@
 namespace fn::_internal::Exception
 {
   /**
-   * @brief  A foundation class for exceptions.
-   * @tparam name The name of the exception.
-   * @tparam Context The context of the exception.
+   * @brief   A foundation class for custom exceptions with extended information
+   *          and functionality.
+   * @tparam  name The name of the exception.
+   * @tparam  Context The context of the exception.
+   * @warning Use this class as a base for custom exceptions.
    */
   template <Name name, _internal::IsContext Context>
   class Exception final : public std::exception

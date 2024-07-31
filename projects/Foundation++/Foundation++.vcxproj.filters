@@ -48,6 +48,9 @@
     <ClInclude Include="source\pch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Foundation\Support\consteval.ipp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\pch.cpp">
