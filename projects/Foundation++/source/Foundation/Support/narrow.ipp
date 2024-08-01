@@ -46,7 +46,7 @@ namespace fn::Support
   [[nodiscard]] constexpr auto narrow_cast(From value) -> To
   {
     // Check if signedness is different
-    constexpr bln DIFF_SIGNED{IsSigned<To> != IsSigned<From>};
+    constexpr bln DIFFERENT_SIGNEDNESS{IsSigned<To> != IsSigned<From>};
 
     // Static cast the value
     const auto castedValue{static_cast<To>(value)};
@@ -58,7 +58,7 @@ namespace fn::Support
     }
 
     // Throw error if sign changed
-    if constexpr (DIFF_SIGNED and ((castedValue < To{}) != (value < From{})))
+    if (DIFFERENT_SIGNEDNESS and ((castedValue < To{}) != (value < From{})))
     {
       throw NarrowingError{"Sign mismatch"};
     }
