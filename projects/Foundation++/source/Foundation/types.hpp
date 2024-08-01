@@ -2,6 +2,8 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <string>
+#include <string_view>
 #include <variant>
 
 namespace fn
@@ -39,6 +41,12 @@ namespace fn
    *        pointer.
    */
   using uptr = std::uintptr_t;
+
+  /**
+   * @brief A type that represents a signed integer large enough to hold the
+   *        difference between two pointers.
+   */
+  using dptr = std::ptrdiff_t;
 
   /**
    * @brief A type that represents a null pointer.
@@ -282,22 +290,75 @@ namespace fn
   \*--------------------------------------------------------------------------*/
 
   /**
+   * @brief A type that represents a string of UTF-8 encoded characters.
+   */
+  using u8str = std::u8string;
+
+  /**
+   * @brief A type that represents a string of UTF-16 encoded characters.
+   */
+  using u16str = std::u16string;
+
+  /**
+   * @brief A type that represents a string of UTF-32 encoded characters.
+   */
+  using u32str = std::u32string;
+
+  /**
+   * @brief A type that represents a string of platform-specific characters.
+   */
+  using str = std::string;
+
+  /**
+   * @brief A type that represents a string of platform-specific wide
+   *        characters.
+   */
+  using wstr = std::wstring;
+
+  /**
+   * @brief A type that represents a string view of UTF-8 encoded characters.
+   */
+  using u8strv = std::u8string_view;
+
+  /**
+   * @brief A type that represents a string view of UTF-16 encoded characters.
+   */
+  using u16strv = std::u16string_view;
+
+  /**
+   * @brief A type that represents a string view of UTF-32 encoded characters.
+   */
+  using u32strv = std::u32string_view;
+
+  /**
+   * @brief A type that represents a string view of platform-specific
+   *        characters.
+   */
+  using strv = std::string_view;
+
+  /**
+   * @brief A type that represents a string view of platform-specific wide
+   *        characters.
+   */
+  using wstrv = std::wstring_view;
+
+  /**
    * @brief A type that represents a constant pointer to a character with
    *        exactly 8 bits in size.
    */
-  using c8str = const c8*;
+  using c8cstr = const c8*;
 
   /**
    * @brief A type that represents a constant pointer to a character with
    *        exactly 16 bits in size.
    */
-  using c16str = const c16*;
+  using c16cstr = const c16*;
 
   /**
    * @brief A type that represents a constant pointer to a character with
    *        exactly 32 bits in size.
    */
-  using c32str = const c32*;
+  using c32cstr = const c32*;
 
   /**
    * @brief A type that represents a constant pointer to a platform-specific
@@ -309,7 +370,7 @@ namespace fn
    * @brief A type that represents a constant pointer to a platform-specific
    *        wide character.
    */
-  using wstr = const wdef*;
+  using wcstr = const wdef*;
 
   /*--------------------------------------------------------------------------*\
   *| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Others >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
