@@ -43,15 +43,15 @@ namespace fn
   using uptr = std::uintptr_t;
 
   /**
-   * @brief A type that represents a signed integer large enough to hold the
-   *        difference between two pointers.
-   */
-  using dptr = std::ptrdiff_t;
-
-  /**
    * @brief A type that represents a null pointer.
    */
   using nptr = std::nullptr_t;
+
+  /**
+   * @brief A type that represents a signed integer large enough to hold the
+   *        difference between two pointers.
+   */
+  using ptrd = std::ptrdiff_t;
 
   /*--------------------------------------------------------------------------*\
   *| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Booleans >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
