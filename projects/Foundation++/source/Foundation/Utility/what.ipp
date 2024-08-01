@@ -14,7 +14,7 @@ namespace fn::Utility
    *           `std::exception::what` `noexcept`, this function will be removed.
    */
   [[nodiscard]] inline auto what(const std::exception& exception
-  ) noexcept -> cstr;
+  ) noexcept -> strv;
 } // namespace fn::Utility
 
 /*----------------------------------------------------------------------------*\
@@ -24,7 +24,7 @@ namespace fn::Utility
 namespace fn::Utility
 {
   [[nodiscard]] inline auto what(const std::exception& exception
-  ) noexcept -> cstr
+  ) noexcept -> strv
   {
 #pragma warning(push)
 #pragma warning(disable : 26'447)
