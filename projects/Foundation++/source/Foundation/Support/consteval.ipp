@@ -9,21 +9,19 @@ namespace fn::Support
 {
   /**
    * @brief   Forces the compiler to evaluate the expression at compile-time.
-   * @details This function is marked as `consteval`, which ensures that it is
-   *          always evaluated at compile-time. It effectively returns the
-   *          provided value, but the evaluation is enforced to occur during
-   *          compilation.
+   * @details This function is marked as `consteval`, which ensures that it is always evaluated at
+   *          compile-time. It effectively returns the provided value, but the evaluation is
+   *          enforced to occur during compilation.
    * @param   value The value to be evaluated and returned.
    * @returns The value passed in.
    */
   [[nodiscard]] consteval auto as_consteval(auto value) noexcept -> auto;
 
   /**
-   * @brief   Constructs an object of type `Type` with the given arguments at
+   * @brief   Constructs an object of type `Type` with the given arguments at compile-time.
+   * @details This function template is `consteval` and requires that `Type` is constructible from
+   *          the provided arguments. It forces the construction of the object to occur at
    *          compile-time.
-   * @details This function template is `consteval` and requires that `Type` is
-   *          constructible from the provided arguments. It forces the
-   *          construction of the object to occur at compile-time.
    * @tparam  Type The type of the object to construct.
    * @tparam  Args The types of the arguments used to construct the object.
    * @param   args Arguments to pass to the constructor of `Type`.
@@ -34,12 +32,10 @@ namespace fn::Support
   [[nodiscard]] consteval auto make_consteval(Args&&... args) -> Type;
 
   /**
-   * @brief   Invokes a callable object with the given arguments at
-   *          compile-time.
-   * @details This function template is `consteval` and requires that the
-   *          callable can be invoked with the provided arguments. It forces
-   *          compile-time evaluation by invoking the callable and returning the
-   *          result.
+   * @brief   Invokes a callable object with the given arguments at compile-time.
+   * @details This function template is `consteval` and requires that the callable can be invoked
+   *          with the provided arguments. It forces compile-time evaluation by invoking the
+   *          callable and returning the result.
    * @tparam  callable The callable object to be invoked.
    * @tparam  Args The types of the arguments to pass to the callable.
    * @param   args Arguments to pass to the callable.
@@ -50,9 +46,9 @@ namespace fn::Support
   [[nodiscard]] consteval auto make_consteval(Args&&... args) -> auto;
 } // namespace fn::Support
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 namespace fn::Support
 {
@@ -79,9 +75,9 @@ namespace fn::Support
   }
 } // namespace fn::Support
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 // NOLINTBEGIN(misc-unused-using-decls)
 

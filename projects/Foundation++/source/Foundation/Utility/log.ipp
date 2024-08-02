@@ -19,9 +19,9 @@ namespace fn::Utility
   auto elog(const Type& message) noexcept -> none;
 } // namespace fn::Utility
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 namespace fn::Utility
 {
@@ -36,14 +36,12 @@ namespace fn::Utility
 #pragma warning(push)
 #pragma warning(disable : 26'447)
 
-    // NOLINTBEGIN(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-    // hicpp-no-array-decay)
+    // NOLINTBEGIN(cppcoreguidelines-pro-bounds-array-to-pointer-decay, hicpp-no-array-decay)
 
     // Log the exception
     std::cerr << '\n' << message << '\n';
 
-    // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-    // hicpp-no-array-decay)
+    // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay, hicpp-no-array-decay)
 
 #pragma warning(pop)
   }
@@ -51,9 +49,9 @@ namespace fn::Utility
   // NOLINTEND(bugprone-exception-escape)
 } // namespace fn::Utility
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 // NOLINTBEGIN(misc-unused-using-decls)
 

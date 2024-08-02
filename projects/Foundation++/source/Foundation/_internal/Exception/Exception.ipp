@@ -15,8 +15,7 @@
 namespace fn::_internal::Exception
 {
   /**
-   * @brief   A foundation class for custom exceptions with extended information
-   *          and functionality.
+   * @brief   A foundation class for custom exceptions with extended information and functionality.
    * @tparam  name The name of the exception.
    * @tparam  Context The context of the exception.
    * @warning Use this class as a base for custom exceptions.
@@ -25,9 +24,9 @@ namespace fn::_internal::Exception
   class Exception final : public std::exception
   {
   public:
-    /*------------------------------------------------------------------------*\
-    *| [public]: Constructors                                                 |*
-    \*------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------+--------*\
+    *| [public]: Constructors                                                            | PUBLIC |*
+    \*-----------------------------------------------------------------------------------+--------*/
 
     /**
      * @brief Constructs an exception by copying another exception.
@@ -53,8 +52,7 @@ namespace fn::_internal::Exception
      * @param message The message.
      */
     explicit Exception(
-      std::string&&               message,
-      const std::source_location& location = std::source_location::current()
+      std::string&& message, const std::source_location& location = std::source_location::current()
     ) noexcept;
 
     /**
@@ -68,18 +66,18 @@ namespace fn::_internal::Exception
       const std::source_location& location = std::source_location::current()
     ) noexcept;
 
-    /*------------------------------------------------------------------------*\
-    *| [public]: Destructor                                                   |*
-    \*------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------+--------*\
+    *| [public]: Destructor                                                              | PUBLIC |*
+    \*-----------------------------------------------------------------------------------+--------*/
 
     /**
      * @brief Destructs the exception.
      */
     ~Exception() override = default;
 
-    /*------------------------------------------------------------------------*\
-    *| [public]: Operators                                                    |*
-    \*------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------+--------*\
+    *| [public]: Operators                                                               | PUBLIC |*
+    \*-----------------------------------------------------------------------------------+--------*/
 
     /**
      * @brief   Assigns another exception to this exception by copying.
@@ -95,9 +93,9 @@ namespace fn::_internal::Exception
      */
     auto operator=(Exception&& other) noexcept -> Exception& = default;
 
-    /*------------------------------------------------------------------------*\
-    *| [public]: Methods                                                      |*
-    \*------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------+--------*\
+    *| [public]: Methods                                                                 | PUBLIC |*
+    \*-----------------------------------------------------------------------------------+--------*/
 
     /**
      * @brief   Accessor for the name of the exception.
@@ -105,43 +103,40 @@ namespace fn::_internal::Exception
      */
     [[nodiscard]] auto what() const noexcept -> cstr override;
 
-    /*------------------------------------------------------------------------*\
-    *| [public]: Accessors                                                    |*
-    \*------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------+--------*\
+    *| [public]: Accessors                                                               | PUBLIC |*
+    \*-----------------------------------------------------------------------------------+--------*/
 
     /**
      * @brief   Accessor for the message of the exception.
      * @returns The message of the exception.
      */
-    [[nodiscard]] auto getMessage() const noexcept
-      -> const std::optional<std::string>&;
+    [[nodiscard]] auto getMessage() const noexcept -> const std::optional<std::string>&;
 
     /**
      * @brief   Accessor for the context of the exception.
      * @returns The context of the exception.
      */
-    [[nodiscard]] auto getContext() const noexcept
-      -> const std::optional<Context>&;
+    [[nodiscard]] auto getContext() const noexcept -> const std::optional<Context>&;
 
     /**
      * @brief   Accessor for the location of the exception.
      * @returns The location of the exception.
      */
-    [[nodiscard]] auto getLocation() const noexcept
-      -> const std::source_location&;
+    [[nodiscard]] auto getLocation() const noexcept -> const std::source_location&;
 
   private:
-    /*------------------------------------------------------------------------*\
-    *| [private]: Fields                                                      |*
-    \*------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------------+---------*\
+    *| [private]: Fields                                                                | PRIVATE |*
+    \*----------------------------------------------------------------------------------+---------*/
 
     std::optional<std::string> m_message;
     std::optional<Context>     m_context;
     std::source_location       m_location;
 
-    /*------------------------------------------------------------------------*\
-    *| [private]: Friends                                                     |*
-    \*------------------------------------------------------------------------*/
+    /*----------------------------------------------------------------------------------+---------*\
+    *| [private]: Friends                                                               | PRIVATE |*
+    \*----------------------------------------------------------------------------------+---------*/
 
     // NOLINTBEGIN(bugprone-exception-escape)
 
@@ -151,21 +146,17 @@ namespace fn::_internal::Exception
      * @param   exception The exception.
      * @returns The output stream.
      */
-    friend auto operator<<(
-      std::ostream& os, const Exception& exception
-    ) noexcept -> std::ostream&
+    friend auto operator<<(std::ostream& os, const Exception& exception) noexcept -> std::ostream&
     {
 #pragma warning(push)
 #pragma warning(disable : 26'447 26'485)
 
-      // NOLINTBEGIN(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-      // hicpp-no-array-decay)
+      // NOLINTBEGIN(cppcoreguidelines-pro-bounds-array-to-pointer-decay, hicpp-no-array-decay)
 
       // Print exception name
       os << name.value << '\n';
 
-      // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-      // hicpp-no-array-decay)
+      // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay, hicpp-no-array-decay)
 
       // Print message if available
       if (const auto message{exception.m_message}; message.has_value())
@@ -184,9 +175,8 @@ namespace fn::_internal::Exception
       }
 
       // Print address
-      os << "  Address: " << exception.m_location.file_name() << "("
-         << exception.m_location.line() << ":" << exception.m_location.column()
-         << ")\n";
+      os << "  Address: " << exception.m_location.file_name() << "(" << exception.m_location.line()
+         << ":" << exception.m_location.column() << ")\n";
 
       // Print routine
       os << "  Routine: " << exception.m_location.function_name();
@@ -201,19 +191,18 @@ namespace fn::_internal::Exception
   };
 } // namespace fn::_internal::Exception
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 namespace fn::_internal::Exception
 {
-  /*--------------------------------------------------------------------------*\
-  *| [public]: Constructors                                                   |*
-  \*--------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------------------+--------*\
+  *| [public]: Constructors                                                              | PUBLIC |*
+  \*-------------------------------------------------------------------------------------+--------*/
 
   template <Name name, _internal::IsContext Context>
-  Exception<name, Context>::Exception(const std::source_location& location
-  ) noexcept
+  Exception<name, Context>::Exception(const std::source_location& location) noexcept
     : m_location{location}
   {}
 
@@ -227,18 +216,16 @@ namespace fn::_internal::Exception
 
   template <Name name, _internal::IsContext Context>
   Exception<name, Context>::Exception(
-    std::string&&               message,
-    Context&&                   context,
-    const std::source_location& location
+    std::string&& message, Context&& context, const std::source_location& location
   ) noexcept
     : m_message{std::move(message)}
     , m_context{std::move(context)}
     , m_location{location}
   {}
 
-  /*--------------------------------------------------------------------------*\
-  *| [public]: Methods                                                        |*
-  \*--------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------------------+--------*\
+  *| [public]: Methods                                                                   | PUBLIC |*
+  \*-------------------------------------------------------------------------------------+--------*/
 
   template <Name name, _internal::IsContext Context>
   [[nodiscard]] auto Exception<name, Context>::what() const noexcept -> cstr
@@ -246,20 +233,18 @@ namespace fn::_internal::Exception
 #pragma warning(push)
 #pragma warning(disable : 26'485)
 
-    // NOLINTBEGIN(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-    // hicpp-no-array-decay)
+    // NOLINTBEGIN(cppcoreguidelines-pro-bounds-array-to-pointer-decay, hicpp-no-array-decay)
 
     return name.value;
 
-    // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-    // hicpp-no-array-decay)
+    // NOLINTEND(cppcoreguidelines-pro-bounds-array-to-pointer-decay, hicpp-no-array-decay)
 
 #pragma warning(pop)
   }
 
-  /*--------------------------------------------------------------------------*\
-  *| [public]: Accessors                                                      |*
-  \*--------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------------------+--------*\
+  *| [public]: Accessors                                                                 | PUBLIC |*
+  \*-------------------------------------------------------------------------------------+--------*/
 
   template <Name name, _internal::IsContext Context>
   [[nodiscard]] auto Exception<name, Context>::getMessage() const noexcept

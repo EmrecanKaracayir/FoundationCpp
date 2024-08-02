@@ -7,8 +7,8 @@
 namespace fn::Support
 {
   /**
-   * @brief   Implementation of Guidelines Support Library's `narrow` function
-   *          that runs on arithmetic types.
+   * @brief   Implementation of Guidelines Support Library's `narrow` function that runs on
+   *          arithmetic types.
    * @param   value The value to cast.
    * @tparam  To The type to cast to.
    * @tparam  From The type to cast from.
@@ -20,8 +20,8 @@ namespace fn::Support
   [[nodiscard]] constexpr auto narrow_cast(From value) -> To;
 
   /**
-   * @brief   Implementation of Guidelines Support Library's `narrow` function
-   *          that runs on non-arithmetic types.
+   * @brief   Implementation of Guidelines Support Library's `narrow` function that runs on
+   *          non-arithmetic types.
    * @param   value The value to cast.
    * @tparam  To The type to cast to.
    * @tparam  From The type to cast from.
@@ -33,9 +33,9 @@ namespace fn::Support
   [[nodiscard]] constexpr auto narrow_cast(From value) -> To;
 } // namespace fn::Support
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 namespace fn::Support
 {
@@ -86,9 +86,9 @@ namespace fn::Support
 #pragma warning(pop)
 } // namespace fn::Support
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 // NOLINTBEGIN(misc-unused-using-decls)
 

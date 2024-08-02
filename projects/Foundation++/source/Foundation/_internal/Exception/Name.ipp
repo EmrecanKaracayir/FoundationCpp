@@ -5,8 +5,7 @@
 #include <algorithm>
 #include <span>
 
-// NOLINTBEGIN(cppcoreguidelines-avoid-c-arrays, hicpp-avoid-c-arrays,
-// modernize-avoid-c-arrays)
+// NOLINTBEGIN(cppcoreguidelines-avoid-c-arrays, hicpp-avoid-c-arrays, modernize-avoid-c-arrays)
 
 namespace fn::_internal::Exception
 {
@@ -17,9 +16,9 @@ namespace fn::_internal::Exception
   template <size length>
   struct Name
   {
-    /*------------------------------------------------------------------------*\
-    *| [public]: Constructors                                                 |*
-    \*------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------+--------*\
+    *| [public]: Constructors                                                            | PUBLIC |*
+    \*-----------------------------------------------------------------------------------+--------*/
 
     Name(const Name&) noexcept = delete;
     Name(Name&&) noexcept      = delete;
@@ -31,17 +30,17 @@ namespace fn::_internal::Exception
      */
     consteval explicit Name(const cdef (&name)[length]) noexcept;
 
-    /*------------------------------------------------------------------------*\
-    *| [public]: Fields                                                       |*
-    \*------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------+--------*\
+    *| [public]: Fields                                                                  | PUBLIC |*
+    \*-----------------------------------------------------------------------------------+--------*/
 
     cdef value[length]{};
   };
 } // namespace fn::_internal::Exception
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<< Deduction Guides >>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Deduction Guides >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 namespace fn::_internal::Exception
 {
@@ -49,15 +48,15 @@ namespace fn::_internal::Exception
   Name(const cdef (&)[length]) -> Name<length>;
 } // namespace fn::_internal::Exception
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 namespace fn::_internal::Exception
 {
-  /*--------------------------------------------------------------------------*\
-  *| [public]: Constructors                                                   |*
-  \*--------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------------------+--------*\
+  *| [public]: Constructors                                                              | PUBLIC |*
+  \*-------------------------------------------------------------------------------------+--------*/
 
   template <size length>
   consteval Name<length>::Name(const cdef (&name)[length]) noexcept
@@ -67,5 +66,4 @@ namespace fn::_internal::Exception
   }
 } // namespace fn::_internal::Exception
 
-// NOLINTEND(cppcoreguidelines-avoid-c-arrays, hicpp-avoid-c-arrays,
-// modernize-avoid-c-arrays)
+// NOLINTEND(cppcoreguidelines-avoid-c-arrays, hicpp-avoid-c-arrays, modernize-avoid-c-arrays)

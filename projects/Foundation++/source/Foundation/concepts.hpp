@@ -13,15 +13,13 @@ namespace fn
   concept IsArithmetic = std::is_arithmetic_v<Type>;
 
   /**
-   * @brief Concept that checks if a type is constructible from a set of
-   *        arguments.
+   * @brief Concept that checks if a type is constructible from a set of arguments.
    */
   template <typename Type, typename... Args>
   concept IsConstructible = std::constructible_from<Type, Args...>;
 
   /**
-   * @brief Concept that checks if a callable is invocable with a set of
-   *        arguments.
+   * @brief Concept that checks if a callable is invocable with a set of arguments.
    */
   template <typename Callable, typename... Args>
   concept IsInvocable = std::is_invocable_v<Callable, Args...>;
@@ -41,6 +39,12 @@ namespace fn
   };
 
   /**
+   * @brief Concept that checks if two types are the same.
+   */
+  template <typename Subject, typename Candidate>
+  concept IsSame = std::same_as<Subject, Candidate>;
+
+  /**
    * @brief Concept that checks if a type is signed.
    */
   template <typename Type>
@@ -52,9 +56,9 @@ namespace fn
   template <typename Type>
   concept IsUnsigned = std::is_unsigned_v<Type>;
 
-  /*--------------------------------------------------------------------------*\
-  *| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Counters >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-  \*--------------------------------------------------------------------------*/
+  /*----------------------------------------------------------------------------------------------*\
+  *| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Counters >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+  \*----------------------------------------------------------------------------------------------*/
 
   /**
    * @brief Concept that checks if a type is non-arithmetic.
@@ -63,15 +67,13 @@ namespace fn
   concept IsNotArithmetic = not IsArithmetic<Type>;
 
   /**
-   * @brief Concept that checks if a type is not constructible from a set of
-   *        arguments.
+   * @brief Concept that checks if a type is not constructible from a set of arguments.
    */
   template <typename Type, typename... Args>
   concept IsNotConstructible = not IsConstructible<Type, Args...>;
 
   /**
-   * @brief Concept that checks if a callable is not invocable with a set of
-   *        arguments.
+   * @brief Concept that checks if a callable is not invocable with a set of arguments.
    */
   template <typename Callable, typename... Args>
   concept IsNotInvocable = not IsInvocable<Callable, Args...>;
@@ -87,6 +89,12 @@ namespace fn
    */
   template <typename Type>
   concept IsNotPrintable = not IsPrintable<Type>;
+
+  /**
+   * @brief Concept that checks if two types are not the same.
+   */
+  template <typename Subject, typename Candidate>
+  concept IsNotSame = not IsSame<Subject, Candidate>;
 
   /**
    * @brief Concept that checks if a type is not signed.

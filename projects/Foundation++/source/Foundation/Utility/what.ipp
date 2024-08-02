@@ -10,21 +10,19 @@ namespace fn::Utility
    * @brief    A `noexcept` wrapper around `std::exception::what`.
    * @param    exception The exception to get the message of.
    * @return   The message of the exception.
-   * @internal When MSVC decides to conform to the standard by making
-   *           `std::exception::what` `noexcept`, this function will be removed.
+   * @internal When MSVC decides to conform to the standard by making `std::exception::what`
+   *           `noexcept`, this function will be removed.
    */
-  [[nodiscard]] inline auto what(const std::exception& exception
-  ) noexcept -> strv;
+  [[nodiscard]] inline auto what(const std::exception& exception) noexcept -> strv;
 } // namespace fn::Utility
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Implementation >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 namespace fn::Utility
 {
-  [[nodiscard]] inline auto what(const std::exception& exception
-  ) noexcept -> strv
+  [[nodiscard]] inline auto what(const std::exception& exception) noexcept -> strv
   {
 #pragma warning(push)
 #pragma warning(disable : 26'447)
@@ -36,9 +34,9 @@ namespace fn::Utility
   }
 } // namespace fn::Utility
 
-/*----------------------------------------------------------------------------*\
-*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
-\*----------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------------------*\
+*| <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Promotes >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> |*
+\*------------------------------------------------------------------------------------------------*/
 
 // NOLINTBEGIN(misc-unused-using-decls)
 
