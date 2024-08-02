@@ -20,10 +20,6 @@ namespace fn::_internal::Exception
     *| [public]: Constructors                                                            | PUBLIC |*
     \*-----------------------------------------------------------------------------------+--------*/
 
-    Name(const Name&) noexcept = delete;
-    Name(Name&&) noexcept      = delete;
-    Name() noexcept            = delete;
-
     /**
      * @brief Constructs a name from a C-style string.
      * @param name The C-style string.
@@ -62,7 +58,7 @@ namespace fn::_internal::Exception
   consteval Name<length>::Name(const cdef (&name)[length]) noexcept
   {
     // Copy the name
-    std::ranges::copy_n(name, length, std::span<cdef>{value}.begin());
+    std::ranges::copy_n(static_cast<const cdef*>(name), length, std::span<cdef>{value}.begin());
   }
 } // namespace fn::_internal::Exception
 
