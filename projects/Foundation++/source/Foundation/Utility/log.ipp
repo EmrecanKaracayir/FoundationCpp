@@ -11,12 +11,12 @@ namespace fn::Utility
   /**
    * @brief    A `noexcept` wrapper around `std::cerr`.
    * @param    message The message to log.
-   * @tparam   Type The type of the message.
+   * @tparam   T The type of the message.
    * @note     Inserts a newline character after the message.
    * @internal A proper logging library will surpass this function.
    */
-  template <IsPrintable Type>
-  auto elog(const Type& message) noexcept -> none;
+  template <IsPrintable T>
+  auto elog(const T& message) noexcept -> none;
 } // namespace fn::Utility
 
 /*------------------------------------------------------------------------------------------------*\
@@ -27,8 +27,8 @@ namespace fn::Utility
 {
   // NOLINTBEGIN(bugprone-exception-escape)
 
-  template <IsPrintable Type>
-  auto elog(const Type& message) noexcept -> none
+  template <IsPrintable T>
+  auto elog(const T& message) noexcept -> none
   {
     // Ensure that the stream is in a non-throwing state
     assert(std::cout.exceptions() == std::ios_base::iostate{0});

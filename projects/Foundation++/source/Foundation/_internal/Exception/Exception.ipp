@@ -2,14 +2,13 @@
 
 #include "Foundation/_internal/Exception/_internal/concepts.hpp"
 #include "Foundation/_internal/Exception/Name.ipp"
+#include "Foundation/concepts.hpp"
 #include "Foundation/types.hpp"
+#include "Foundation/utilities.hpp"
 
-#include <concepts>
 #include <exception>
-#include <optional>
 #include <ostream>
 #include <source_location>
-#include <string>
 #include <utility>
 
 namespace fn::_internal::Exception
@@ -17,10 +16,10 @@ namespace fn::_internal::Exception
   /**
    * @brief   A foundation class for custom exceptions with extended information and functionality.
    * @tparam  name The name of the exception.
-   * @tparam  Context The context of the exception.
+   * @tparam  TContext The context of the exception.
    * @warning Use this class as a base for custom exceptions.
    */
-  template <Name name, _internal::IsContext Context>
+  template <Name name, _internal::IsContext TContext>
   class Exception final : public std::exception
   {
   public:
@@ -52,7 +51,7 @@ namespace fn::_internal::Exception
      * @param message The message.
      */
     explicit Exception(
-      std::string&& message, const std::source_location& location = std::source_location::current()
+      fn::str&& message, const std::source_location& location = std::source_location::current()
     ) noexcept;
 
     /**
@@ -61,8 +60,8 @@ namespace fn::_internal::Exception
      * @param context The context.
      */
     Exception(
-      std::string&&               message,
-      Context&&                   context,
+      fn::str&&                   message,
+      TContext&&                  context,
       const std::source_location& location = std::source_location::current()
     ) noexcept;
 
@@ -111,13 +110,13 @@ namespace fn::_internal::Exception
      * @brief   Accessor for the message of the exception.
      * @returns The message of the exception.
      */
-    [[nodiscard]] auto getMessage() const noexcept -> const std::optional<std::string>&;
+    [[nodiscard]] auto getMessage() const noexcept -> const fn::opt<fn::str>&;
 
     /**
      * @brief   Accessor for the context of the exception.
      * @returns The context of the exception.
      */
-    [[nodiscard]] auto getContext() const noexcept -> const std::optional<Context>&;
+    [[nodiscard]] auto getContext() const noexcept -> const fn::opt<TContext>&;
 
     /**
      * @brief   Accessor for the location of the exception.
@@ -130,9 +129,9 @@ namespace fn::_internal::Exception
     *| [private]: Fields                                                                | PRIVATE |*
     \*----------------------------------------------------------------------------------+---------*/
 
-    std::optional<std::string> m_message;
-    std::optional<Context>     m_context;
-    std::source_location       m_location;
+    fn::opt<fn::str>     m_message;
+    fn::opt<TContext>    m_context;
+    std::source_location m_location;
 
     /*----------------------------------------------------------------------------------+---------*\
     *| [private]: Friends                                                               | PRIVATE |*
@@ -168,7 +167,7 @@ namespace fn::_internal::Exception
       if (const auto context{exception.m_context}; context.has_value())
       {
         // Print context if not unit
-        if constexpr (not std::same_as<Context, unit>)
+        if constexpr (not IsSame<TContext, unit>)
         {
           os << "  Context: " << context.value() << '\n';
         }
@@ -201,22 +200,22 @@ namespace fn::_internal::Exception
   *| [public]: Constructors                                                              | PUBLIC |*
   \*-------------------------------------------------------------------------------------+--------*/
 
-  template <Name name, _internal::IsContext Context>
-  Exception<name, Context>::Exception(const std::source_location& location) noexcept
+  template <Name name, _internal::IsContext TContext>
+  Exception<name, TContext>::Exception(const std::source_location& location) noexcept
     : m_location{location}
   {}
 
-  template <Name name, _internal::IsContext Context>
-  Exception<name, Context>::Exception(
-    std::string&& message, const std::source_location& location
+  template <Name name, _internal::IsContext TContext>
+  Exception<name, TContext>::Exception(
+    fn::str&& message, const std::source_location& location
   ) noexcept
     : m_message{std::move(message)}
     , m_location{location}
   {}
 
-  template <Name name, _internal::IsContext Context>
-  Exception<name, Context>::Exception(
-    std::string&& message, Context&& context, const std::source_location& location
+  template <Name name, _internal::IsContext TContext>
+  Exception<name, TContext>::Exception(
+    fn::str&& message, TContext&& context, const std::source_location& location
   ) noexcept
     : m_message{std::move(message)}
     , m_context{std::move(context)}
@@ -227,8 +226,8 @@ namespace fn::_internal::Exception
   *| [public]: Methods                                                                   | PUBLIC |*
   \*-------------------------------------------------------------------------------------+--------*/
 
-  template <Name name, _internal::IsContext Context>
-  [[nodiscard]] auto Exception<name, Context>::what() const noexcept -> cstr
+  template <Name name, _internal::IsContext TContext>
+  [[nodiscard]] auto Exception<name, TContext>::what() const noexcept -> cstr
   {
 #pragma warning(push)
 #pragma warning(disable : 26'485)
@@ -246,22 +245,22 @@ namespace fn::_internal::Exception
   *| [public]: Accessors                                                                 | PUBLIC |*
   \*-------------------------------------------------------------------------------------+--------*/
 
-  template <Name name, _internal::IsContext Context>
-  [[nodiscard]] auto Exception<name, Context>::getMessage() const noexcept
-    -> const std::optional<std::string>&
+  template <Name name, _internal::IsContext TContext>
+  [[nodiscard]] auto Exception<name, TContext>::getMessage() const noexcept
+    -> const fn::opt<fn::str>&
   {
     return m_message;
   }
 
-  template <Name name, _internal::IsContext Context>
-  [[nodiscard]] auto Exception<name, Context>::getContext() const noexcept
-    -> const std::optional<Context>&
+  template <Name name, _internal::IsContext TContext>
+  [[nodiscard]] auto Exception<name, TContext>::getContext() const noexcept
+    -> const fn::opt<TContext>&
   {
     return m_context;
   }
 
-  template <Name name, _internal::IsContext Context>
-  [[nodiscard]] auto Exception<name, Context>::getLocation() const noexcept
+  template <Name name, _internal::IsContext TContext>
+  [[nodiscard]] auto Exception<name, TContext>::getLocation() const noexcept
     -> const std::source_location&
   {
     return m_location;

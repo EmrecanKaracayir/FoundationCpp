@@ -9,6 +9,6 @@ namespace fn::_internal::Exception::_internal
   /**
    * @brief Concept to check if a type can be a Context.
    */
-  template <typename Type>
-  concept IsContext = IsSame<Type, unit> or (IsMovable<Type> and IsPrintable<Type>);
+  template <typename T>
+  concept IsContext = IsSame<T, unit> or (IsMovable<T> and IsPrintable<T>);
 } // namespace fn::_internal::Exception::_internal

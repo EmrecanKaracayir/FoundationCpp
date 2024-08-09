@@ -7,16 +7,16 @@ namespace fn
 {
   /**
    * @brief  A type that represents an optional value.
-   * @tparam Type The type of the value that may or may not be present.
+   * @tparam T The type of the value that may or may not be present.
    */
-  template <typename Type>
-  using opt = std::optional<Type>;
+  template <typename T>
+  using opt = std::optional<T>;
 
   /**
    * @brief  A type that represents a pair of values.
-   * @tparam FirstType The type of the first value.
-   * @tparam SecondType The type of the second value.
+   * @tparam TFirst The type of the first value.
+   * @tparam TSecond The type of the second value.
    */
-  template <typename FirstType, typename SecondType>
-  using pair = std::pair<FirstType, SecondType>;
+  template <typename TFirst, typename TSecond>
+  using pair = std::pair<TFirst, TSecond>;
 } // namespace fn

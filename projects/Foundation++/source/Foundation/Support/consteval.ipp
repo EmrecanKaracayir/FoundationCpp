@@ -22,14 +22,14 @@ namespace fn::Support
    * @details This function template is `consteval` and requires that `Type` is constructible from
    *          the provided arguments. It forces the construction of the object to occur at
    *          compile-time.
-   * @tparam  Type The type of the object to construct.
-   * @tparam  Args The types of the arguments used to construct the object.
+   * @tparam  T The type of the object to construct.
+   * @tparam  TArgs The types of the arguments used to construct the object.
    * @param   args Arguments to pass to the constructor of `Type`.
    * @returns An object of type `Type` constructed with the provided arguments.
    */
-  template <typename Type, typename... Args>
-  requires IsConstructible<Type, Args...>
-  [[nodiscard]] consteval auto make_consteval(Args&&... args) -> Type;
+  template <typename T, typename... TArgs>
+  requires IsConstructible<T, TArgs...>
+  [[nodiscard]] consteval auto make_consteval(TArgs&&... args) -> T;
 
   /**
    * @brief   Invokes a callable object with the given arguments at compile-time.
@@ -37,13 +37,13 @@ namespace fn::Support
    *          with the provided arguments. It forces compile-time evaluation by invoking the
    *          callable and returning the result.
    * @tparam  callable The callable object to be invoked.
-   * @tparam  Args The types of the arguments to pass to the callable.
+   * @tparam  TArgs The types of the arguments to pass to the callable.
    * @param   args Arguments to pass to the callable.
    * @returns The result of invoking the callable with the provided arguments.
    */
-  template <auto callable, typename... Args>
-  requires IsInvocable<decltype(callable), Args...>
-  [[nodiscard]] consteval auto make_consteval(Args&&... args) -> auto;
+  template <auto callable, typename... TArgs>
+  requires IsInvocable<decltype(callable), TArgs...>
+  [[nodiscard]] consteval auto make_consteval(TArgs&&... args) -> auto;
 } // namespace fn::Support
 
 /*------------------------------------------------------------------------------------------------*\
@@ -58,20 +58,20 @@ namespace fn::Support
     return value;
   }
 
-  template <typename Type, typename... Args>
-  requires IsConstructible<Type, Args...>
-  [[nodiscard]] consteval auto make_consteval(Args&&... args) -> Type
+  template <typename T, typename... TArgs>
+  requires IsConstructible<T, TArgs...>
+  [[nodiscard]] consteval auto make_consteval(TArgs&&... args) -> T
   {
     // Construct the type and return it
-    return Type{std::forward<Args>(args)...};
+    return T{std::forward<TArgs>(args)...};
   }
 
-  template <auto callable, typename... Args>
-  requires IsInvocable<decltype(callable), Args...>
-  [[nodiscard]] consteval auto make_consteval(Args&&... args) -> auto
+  template <auto callable, typename... TArgs>
+  requires IsInvocable<decltype(callable), TArgs...>
+  [[nodiscard]] consteval auto make_consteval(TArgs&&... args) -> auto
   {
     // Invoke the callable and return the result
-    return std::invoke(callable, std::forward<Args>(args)...);
+    return std::invoke(callable, std::forward<TArgs>(args)...);
   }
 } // namespace fn::Support
 
