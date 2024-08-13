@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Foundation/types.hpp"
+
+#include <bitset>
 #include <optional>
 #include <utility>
 
@@ -19,4 +22,11 @@ namespace fn
    */
   template <typename TFirst, typename TSecond>
   using pair = std::pair<TFirst, TSecond>;
+
+  /**
+   * @brief  A type that represents a bitset.
+   * @tparam bitCount The number of bits in the bitset.
+   */
+  template <size bitCount>
+  using bitset = std::bitset<bitCount>;
 } // namespace fn

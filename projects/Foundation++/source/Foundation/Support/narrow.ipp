@@ -54,13 +54,13 @@ namespace fn::Support
     // Throw error if the value changed
     if (static_cast<TFrom>(castedValue) != value)
     {
-      throw NarrowingError{"Value mismatch occured!"};
+      throw NarrowingError{"Value mismatch occurred!"};
     }
 
     // Throw error if sign changed
     if (DIFFERENT_SIGNEDNESS and ((castedValue < TTo{}) != (value < TFrom{})))
     {
-      throw NarrowingError{"Sign mismatch occured!"};
+      throw NarrowingError{"Sign mismatch occurred!"};
     }
 
     // Return the casted value
@@ -76,7 +76,7 @@ namespace fn::Support
     // Throw error if the value changed
     if (static_cast<TFrom>(castedValue) != value)
     {
-      throw NarrowingError{"Value mismatch occured!"};
+      throw NarrowingError{"Value mismatch occurerd!"};
     }
 
     // Return the casted value
