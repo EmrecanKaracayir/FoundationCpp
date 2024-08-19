@@ -1,3 +1,3 @@
-# Foundation++
+# LibFoundation++
 
-This is a foundation library for C++20 projects.
+Foundation library for C++20 projects.
