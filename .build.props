@@ -110,7 +110,7 @@
       <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
       <DisableAnalyzeExternal>true</DisableAnalyzeExternal>
       <EnablePREfast>true</EnablePREfast>
-      <AdditionalOptions>/utf-8 /Zc:__cplusplus</AdditionalOptions>
+      <AdditionalOptions>/utf-8 /Zc:__cplusplus /wd4820 /wd4514 /wd5045</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
