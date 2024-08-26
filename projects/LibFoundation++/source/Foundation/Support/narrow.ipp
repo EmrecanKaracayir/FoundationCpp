@@ -76,7 +76,7 @@ namespace fn::Support
     // Throw error if the value changed
     if (static_cast<TFrom>(castedValue) != value)
     {
-      throw NarrowingError{"Value mismatch occurerd!"};
+      throw NarrowingError{"Value mismatch occurred!"};
     }
 
     // Return the casted value

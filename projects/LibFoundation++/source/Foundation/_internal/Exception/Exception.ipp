@@ -167,7 +167,7 @@ namespace fn::_internal::Exception
       if (const auto context{exception.m_context}; context.has_value())
       {
         // Print context if not unit
-        if constexpr (not IsSame<TContext, unit>)
+        if constexpr (IsNotSameAs<unit, TContext>)
         {
           os << "  Context: " << context.value() << '\n';
         }

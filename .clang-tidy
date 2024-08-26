@@ -1,6 +1,6 @@
 # +------------------------------------------------------------------------------------------------+
 # |                                  C++ Clang-Tidy Configuration                                  |
-# |                                        Version 24.08.19                                        |
+# |                                        Version 24.08.25                                        |
 # +------------------------------------------------------------------------------------------------+
 # | What is it?                                                                                    |
 # | -----------                                                                                    |
@@ -32,7 +32,7 @@
 # | Language     : YAML                                                                            |
 # | C++ Standard : C++20                                                                           |
 # | Author       : @EmrecanKaracayir                                                               |
-# | Date         : 2024-08-19                                                                      |
+# | Date         : 2024-08-25                                                                      |
 # +------------------------------------------------------------------------------------------------+
 ---
 # ExcludeHeaderFilterRegex: // v19
@@ -640,7 +640,8 @@ CheckOptions:
     value: "CamelCase"
   - key: readability-identifier-naming.ConceptPrefix
     value: "Is"
-# - key: readability-identifier-naming.ConceptIgnoredRegexp // None
+  - key: readability-identifier-naming.ConceptIgnoredRegexp
+    value: "^Are[A-Z0-9]*[a-zA-Z0-9]*$"
   - key: readability-identifier-naming.ConceptSuffix
     value: ""
 # -
